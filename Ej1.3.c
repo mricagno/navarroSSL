@@ -1,4 +1,8 @@
-/* fichero temp1.c */
+/* 
+Navarro Leandro Adrian
+30/03/2016
+Fahrenheit to Centigrados v1
+*/	
 
 #include <stdio.h>
 

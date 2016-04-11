@@ -31,7 +31,7 @@ int main(void)
 			++cont;
         }
 	}	
-/*		
+	
 	printf("\nHistograma Horizontal de Longitudes:\n\n");
     for (i = 1; i <= MAX_LEN; ++i) {
         if (i != MAX_LEN)
@@ -43,7 +43,7 @@ int main(void)
             putchar('+');
         putchar('\n');
     }
-*/
+
     printf("\nHistograma Vertical de Longitudes:\n\n");
     max = 0;
     for (i = 1; i <= MAX_LEN; ++i)

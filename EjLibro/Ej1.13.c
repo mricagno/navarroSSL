@@ -31,7 +31,7 @@ int main(void)
 			++cont;
         }
 	}	
-		
+/*		
 	printf("\nHistograma Horizontal de Longitudes:\n\n");
     for (i = 1; i <= MAX_LEN; ++i) {
         if (i != MAX_LEN)
@@ -43,17 +43,18 @@ int main(void)
             putchar('+');
         putchar('\n');
     }
-/*
+*/
     printf("\nHistograma Vertical de Longitudes:\n\n");
     max = 0;
     for (i = 1; i <= MAX_LEN; ++i)
         if (vec_len[i] > max)
             max = vec_len[i];
-
-    for (i = 1; i < max; ++i) {
-        printf("  %2u | ", max - i);
-        for (j = 0; j <= MAX_LEN; ++j)
-            if (vec_len[j] >= max - i)
+		
+    for (i = 1; i <= max; ++i) {
+        printf("  %2u | ", max - i + 1);
+		
+        for (j = 1; j <= MAX_LEN; ++j)
+            if (vec_len[j] >= max - i + 1)
                 printf("  +");
             else
                 printf("   ");
@@ -71,6 +72,6 @@ int main(void)
         printf(" %2u", i);
     printf(" >%2u", MAX_LEN);
     printf("\n");
-*/
+
     return 0;
 }

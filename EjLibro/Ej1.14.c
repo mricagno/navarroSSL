@@ -1,8 +1,7 @@
 /* 
 Navarro Leandro Adrian
-08/04/2016
-Ej1.13 Escriba un programa que imprima el histograma de las longitudes de las palabras de su entrada. 
-Es fácil dibujar el histograma con las barras horizontales; la Orientación vertical es un reto más interesante.
+12/04/2016
+Ej1.14 
 */
 
 #include <stdio.h>

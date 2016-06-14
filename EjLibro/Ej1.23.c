@@ -20,7 +20,7 @@ int main(void)
 	
     while ((len = getlinea(s, MAXLENGTH)) > 0) {
 		
-        printf("\Resultado:\n\n");
+        printf("Resultado:\n\n");
         i = 0;
 		
         while (s[i] != '\0') {

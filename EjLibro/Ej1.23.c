@@ -1,5 +1,5 @@
 /* 
-Navarro Leandro Adrian - TP1
+TP1 - Grupo 01
 14/06/2016
 Ej1.23 Escriba un programa para eliminar todos los comentarios de un programa en C. 
 No olvide manejar apropiadamente las cadenas entre comillas y las constantes de carácter. Los comentarios de C no se anidan.
@@ -20,7 +20,7 @@ int main(void)
 	
     while ((len = getlinea(s, MAXLENGTH)) > 0) {
 		
-        printf("\Resultado:\n=========================\n");
+        printf("\Resultado:\n\n");
         i = 0;
 		
         while (s[i] != '\0') {

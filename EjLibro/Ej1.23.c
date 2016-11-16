@@ -1,63 +1,85 @@
 /* 
 TP1 - Grupo 01
-14/06/2016
+16/11/2016
 Ej1.23 Escriba un programa para eliminar todos los comentarios de un programa en C. 
 No olvide manejar apropiadamente las cadenas entre comillas y las constantes de carácter. Los comentarios de C no se anidan.
 */
-
+ 
 #include <stdio.h>
-
-#define MAXLENGTH 5000
-
-int getlinea(char s[], int max);
-
-int main(void)
+ 
+int main()
 {
-    int len, i;
-    char s[MAXLENGTH];
-    
-    printf("Ingrese el código a procesar, luego aprete Ctrl+Z:\n");
-	
-    while ((len = getlinea(s, MAXLENGTH)) > 0) {
-		
-        printf("Resultado:\n\n");
-        i = 0;
-		
-        while (s[i] != '\0') {
-            if (s[i] == '/' && s[i+1] == '/') {
-                i += 2;
-                while (s[i] != '\n' && s[i] != '\0')
-                    ++i;
-            } else if (s[i] == '/' && s[i+1] == '*') {
-                i += 2;
-                while (s[i] != '\0' && s[i+1] != '\0' && (s[i] != '*' || s[i+1] != '/'))
-                    ++i;
-                if (s[i] != '\0' && s[i+1] == '\0')
-                    ++i;
-                if (s[i] == '*')
-                    i += 2;
-            } else if (s[i] == '\"') {
-                putchar('\"');
-                ++i;
-                while (s[i] != '\0' && (s[i-1] == '\\' || s[i] != '\"'))
-                    putchar(s[i++]);
-            } else {
-                putchar(s[i++]);
-            }
-        }
-    }
-    
-    return 0;
-}
-
-int getlinea(char s[], int max)
-{
-    int c, i, l;
-
-    for (i = 0, l = 0; (c = getchar()) != EOF; ++i)
-        if (i < max - 1)
-            s[l++] = c;
-    s[l] = '\0';
-
-    return l;
+	int c;
+	int c2;
+	int quotes = 0;
+	int comment = 0;
+	int current_quote;
+ 
+	c = getchar();
+	while (c != EOF)
+	{
+		if (!comment && !quotes)
+		{
+			if (c == '\'' || c == '"')
+			{
+				quotes = 1;
+				current_quote = c;
+				putchar(c);
+			}
+			else if (c == '/')
+			{
+				c2 = getchar();
+				if (c2 != EOF && c2 == '*')
+				{
+					comment = 1;
+				}
+				else
+				{
+					putchar(c);
+					c = c2;
+					continue;
+				}
+			}
+			else
+			{
+				putchar(c);
+			}
+		}
+		else if (comment)
+		{
+			/* comentario que cierra */
+			if (c == '*')
+			{
+				c2 = getchar();
+				if (c2 != EOF && c2 == '/')
+				{
+					comment = 0;
+				}
+				else
+				{
+					c = c2;
+					continue;
+				}
+			}
+		}
+		else if (quotes)
+		{
+			if (c == '\\')
+			{
+				putchar(c);
+				c = getchar();
+			}
+			else
+			{
+				/* quote que cierra */
+				if (c == current_quote)
+					in_quotes = 0;
+			}
+			putchar(c);
+		}
+ 
+		c = getchar();
+	}
+ 
+	return 0;
 }

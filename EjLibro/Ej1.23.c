@@ -73,7 +73,7 @@ int main()
 			{
 				/* quote que cierra */
 				if (c == current_quote)
-					in_quotes = 0;
+					quotes = 0;
 			}
 			putchar(c);
 		}
